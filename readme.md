@@ -1,0 +1,1 @@
+# MoSca: Dynamic Gaussian Fusion from Casual Videos via 4D Motion Scaffolds
