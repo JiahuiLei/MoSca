@@ -1,0 +1,16 @@
+epi_th: 0.0001
+depth_boundary_th: 1.0
+
+dep_mode: uni
+tap_mode: spatracker
+flow_mode: raft
+
+tap_chunk_size: 5000
+n_track_uniform: 16384
+n_track_dynamic: 8192
+
+flow_steps: [1]
+epi_num_threads: 16 # Null
+
+align_metric_flag: True
+boundary_enhance_th: -1

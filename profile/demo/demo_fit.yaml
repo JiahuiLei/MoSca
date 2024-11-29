@@ -1,0 +1,214 @@
+exp_name: demo_fit
+mode: wild
+
+epi_th: 0.0001
+ba_epi_th: 0.0003
+
+dyn_id_cnt: 4
+scf_geo_keyframe_rate: 1
+dep_median: 1.0
+iso_focal: True
+tap_loading_min_valid_cnt: 2
+
+######################################################
+######################################################
+
+depth_boundary_th: 0.3
+init_cam_with_optimal_fov_results: True #True
+# ba_lr_cam_f: 0.0
+# ba_lr_dep_c: 0.0
+# ba_lr_dep_s: 0.0
+# ba_lr_cam_q: 0.0
+# ba_lr_cam_t: 0.0
+ba_depth_remove_th: 5.0 #30.0
+
+ba_lambda_flow: 1.0
+ba_lambda_depth: 0.1
+ba_lambda_cam_smooth_trans: 0.1
+ba_lambda_cam_smooth_rot: 0.1
+
+ba_fov_search_fallback: 45
+ba_fov_search_N: 100
+ba_fov_search_start: 20 #32
+ba_fov_search_end: 90 #64
+
+robust_depth_decay_th: 1.0
+robust_depth_decay_sigma: 1.0
+robust_std_decay_th: 0.2
+robust_std_decay_sigma: 0.2
+
+# * mosca init
+mosca_unit_world: 0.02
+# mosca_unit_auto_factor: 4.0
+
+mosca_sigma_init_ratio: 2.0
+mosca_sigma_max_ratio: 5.0
+mosca_dist_k: 1
+mosca_topo_th_ratio: 3.0
+mosca_topo_sample_T: 100
+mosca_skinning_k: 16
+
+mosca_mlevel_list: [1]
+mosca_mlevel_k_list: [8]
+mosca_mlevel_w_list: [1.0]
+mosca_mlevel_detach_nn_flag: False # ! fix the bug in the sub version
+
+mosca_resample_flag: True # False
+
+# * GEO SCF
+geo_temporal_diff_shift: [1, 2, 5, 9] #[2, 4]
+geo_temporal_diff_weight: [0.3, 0.3, 0.2, 0.2] #[0.6, 0.4]
+
+get_curve_refilter_shaking_th_world: 0.075
+get_dynamic_curves_filter_factor_in_world: False
+get_curve_refilter_remove_shaking_curve: True
+
+# get_curve_enforce_line_init: False
+# geo_mosca_use_mask_topo: False
+
+get_curve_enforce_line_init: True
+geo_mosca_use_mask_topo: True
+geo_mosca_update_all_topo_steps: [1000] #[200, 500, 800]
+geo_mosca_reline_steps: [1001]
+
+geo_mosca_decay_steps: 2000
+
+geo_mosca_lambda_local_coord: 1.0 #1.0
+geo_mosca_lambda_metric_len: 1.0
+geo_mosca_lambda_xyz_vel: 0.1 #0.3
+geo_mosca_lambda_q_vel: 0.05
+geo_mosca_lambda_xyz_acc: 0.1
+geo_mosca_lambda_q_acc: 0.05
+
+geo_mosca_resample_steps: 100
+
+geo_mosca_steps: 4000
+geo_mosca_lr_q: 0.03
+geo_mosca_lr_p: 0.03
+
+geo_mosca_viz_interval: -1 #1000
+geo_mosca_viz_debug_interval: -1 #500
+
+# * GS init
+gs_static_n_init: 80000 #50000 # 30000
+gs_dynamic_n_init: 30000
+gs_radius_max: 0.05
+gs_max_sph_order: 1
+gs_radius_init_factor: 1.0
+
+gs_max_node_num: 10000
+
+# * Photo
+photo_viz_interval: -1 # 1999
+photo_viz_cheap_interval: -1 #500
+
+gs_dynamic_start_opacity: 0.012 #0.8 #0.009
+gs_static_start_opacity: 0.01 #0.8 #0.01
+gs_include_fg_in_static: True #False
+
+photo_total_steps: 8000
+photo_skinning_corr_start_steps: 4501
+photo_geo_reg_start_steps: 1000
+# photo_lr_np: 0.0003
+# photo_lr_nq: 0.0003
+
+photo_mlevel_list: [1, 3]
+photo_mlevel_k_list: [16, 8]
+photo_mlevel_w_list: [0.6, 0.4]
+
+photo_lambda_rgb: 1.0
+photo_lambda_dep: 0.01
+photo_lambda_normal: 0.1
+photo_random_bg: True
+photo_default_bg_color: [0.0, 0.0, 0.0]
+
+photo_lr_w: 0.01
+photo_lambda_small_w_reg: 0.01
+mosca_w_corr_maintain_sum_flag: True
+
+photo_lambda_track: 0.01
+photo_track_loss_interval: 4
+photo_track_flow_chance: 0.5
+track_flow_interval_candidates: [1, 3]
+photo_track_loss_end_step: 6000
+
+photo_lr_p: 0.00016
+photo_lr_p_final: 0.0000016
+photo_lr_q: 0.001
+photo_lr_s: 0.005
+photo_lr_o: 0.05
+photo_lr_sph: 0.0025
+photo_lr_np: 0.0001
+photo_lr_np_final: 0.0000016
+photo_lr_nq: 0.001
+photo_lr_nq_final: 0.00001
+photo_lr_nsig: 0.01
+photo_lr_sph_rest_factor: 20.0
+
+photo_lambda_vel_xyz_reg: 3.0
+photo_lambda_vel_rot_reg: 1.0
+photo_lambda_acc_xyz_reg: 3.0
+photo_lambda_acc_rot_reg: 3.0
+photo_lambda_arap_coord: 3.0
+photo_lambda_arap_len: 3.0
+
+photo_temporal_diff_shift: [1, 3, 8] #[2, 4]
+photo_temporal_diff_weight: [0.6, 0.2, 0.2] #[0.6, 0.4]
+photo_decay_start: 2000
+photo_optim_cam_after_steps: 3000
+
+photo_d_ctrl_densify_steps: 300
+photo_d_ctrl_prune_steps: 300
+photo_d_ctrl_reset_steps: 1000
+photo_d_ctrl_densify_max_grad: 0.0001
+photo_d_ctrl_prune_opacity_th: 0.02
+photo_d_ctrl_reset_opacity: 0.01
+
+photo_s_ctrl_densify_steps: 400
+photo_s_ctrl_prune_steps: 400
+photo_s_ctrl_reset_steps: 2001
+photo_s_ctrl_densify_max_grad: 0.0002
+photo_s_ctrl_prune_opacity_th: 0.02
+photo_s_ctrl_reset_opacity: 0.01
+
+photo_s2d_trans_steps: [] #[3000]
+photo_dyn_scf_prune_steps: [3500, 4500]
+photo_dyn_scf_prune_sk_th: 0.02
+
+# photo_dyn_error_grow_steps: [4250, 5250]
+# dyn_error_grow_th: 0.3
+# dyn_error_grow_num_frames: 4
+
+photo_dyn_node_densify_steps: [3250]
+photo_dyn_node_densify_grad_th: 0.5
+photo_dyn_node_densify_record_start_steps: 2000
+photo_dyn_node_densify_max_gs_per_new_node: 32
+# # #####################################################
+# # #####################################################
+# # # * photo refilter
+# refilter_curve_by_photo_error_cnt: 1 #4 # at least have n frame large error
+# refilter_curve_by_photo_error_th: 0.1 #
+# # * photo warm
+# photo_warm_epi_th: 0.0001 # ! set to normal range!
+# photo_warm_reset_opacity: True
+
+# photo_static_warm_steps: 6000 # ! debug for now #8000
+# photo_warm_optim_cam_after_steps: 1000
+# photo_warm_lambda_rgb: 1.0
+# photo_warm_lambda_dep: 0.5
+# photo_warm_lambda_normal: 0.1
+# photo_warm_random_bg: True
+# photo_warm_lr_sph_rest_factor: 10.0 #4.0
+# photo_warm_viz_interval: 1999
+# photo_warm_lr_p: 0.0003
+# photo_warm_lr_p_final: 0.000001
+# photo_warm_lr_q: 0.001
+# photo_warm_lr_s: 0.01
+# photo_warm_lr_o: 0.3
+# photo_warm_lr_sph: 0.0025
+
+# photo_warm_s_ctrl_reset_steps: 2001
+# photo_warm_s_ctrl_densify_steps: 400
+# photo_warm_s_ctrl_prune_steps: 400
+# photo_warm_s_ctrl_reset_opacity: 0.01
+# photo_warm_s_ctrl_prune_opacity_th: 0.01

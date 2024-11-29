@@ -1,0 +1,83 @@
+pytorch-lightning==2.0.2
+
+# huggingface_hub
+huggingface-hub>=0.22.0 # this version is fro unidepth v2
+diffusers >= 0.9.0
+accelerate
+transformers
+
+kornia
+matplotlib==3.5.2
+numpy==1.26.4
+plyfile
+open3d 
+# opencv-python==4.5.4.60 # for unknown reason on xgcp cv 4.10 has bug for resize func
+# opencv-python==4.10.0.84
+opencv-python==4.6.0.66
+opencv-contrib-python==4.6.0.66
+
+imageio==2.25.0
+imageio-ffmpeg 
+scipy==1.10.1
+scikit-image==0.19.0
+kornia 
+black 
+chumpy 
+rtree 
+tensorboardX 
+tensorboard
+
+transforms3d 
+munch
+#opencv-contrib-python==3.4.11.45
+ipython 
+jupyter 
+pycocotools
+
+rich==13.5.3
+moviepy 
+pyrender==0.1.45 
+shapely==1.8.4 
+trimesh==3.12.6 
+triangle
+pydot
+
+omegaconf
+
+numba
+hydra-core
+openpyxl
+
+cython
+
+ninja
+PyOpenGL 
+glfw 
+xatlas 
+gdown
+
+# ! warning, the timm for unidepth may require 0.9
+# timm==0.6.7 # for zeodepth old verison
+timm==0.9
+
+plyfile
+configargparse
+easydict
+
+Pillow==9.5.0
+
+# marigold
+accelerate>=0.22.0
+diffusers>=0.20.1
+transformers>=4.32.1
+
+einops
+wandb
+
+# tapier
+ipympl 
+mediapy==1.2.2
+# chex
+einshape
+
+cupy-cuda11x==12.2.0

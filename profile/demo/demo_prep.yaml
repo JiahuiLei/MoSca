@@ -1,0 +1,17 @@
+dep_mode: depthcrafter
+tap_mode: spatracker
+flow_mode: raft
+
+# for dynamic denser TAP resample
+epi_th: 0.0001
+depth_boundary_th: 1.0
+
+tap_chunk_size: 16384
+n_track_uniform: 16384
+n_track_dynamic: 16384
+
+flow_steps: [1, 3]
+epi_num_threads: 16 # Null
+
+align_metric_flag: True
+boundary_enhance_th: 1.0 # ! enhance boundary for spatracker

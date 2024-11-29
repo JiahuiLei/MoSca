@@ -1,0 +1,195 @@
+exp_name: sintel_cam_fullfit
+mode: sintel
+
+epi_th: 0.001 # ! debug 0.001
+ba_epi_th: 0.00003
+dyn_id_cnt: 2 # ! critical
+scf_geo_keyframe_rate: 1
+dep_median: 1.0 # don't normalize for now
+iso_focal: False
+
+tap_loading_min_valid_cnt: 2
+
+######################################################
+######################################################
+
+depth_boundary_th: 0.3
+init_cam_with_optimal_fov_results: False #True
+# ! manually set the GT camera and focal lr to zero
+# init_gt_camera: True
+# rescale_gt_cam_transl: True
+# ba_lr_cam_f: 0.0
+# ba_lr_dep_c: 0.0
+# ba_lr_dep_s: 0.0
+# ba_lr_cam_q: 0.0 # ! for now fix the camera pose for GT camera, then in photo stage optimzie it
+# ba_lr_cam_t: 0.0
+ba_depth_remove_th: 30.0
+
+# sintel
+ba_lambda_flow: 1.0
+ba_lambda_depth: 0.1
+
+ba_lambda_cam_smooth_trans: 0.05
+ba_lambda_cam_smooth_rot: 0.005
+
+ba_fov_search_fallback: 30
+ba_fov_search_N: 200
+ba_fov_search_start: 5
+ba_fov_search_end: 45
+
+ba_early_exit: False
+# ######################################################
+# ######################################################
+# # * photo warm
+# photo_warm_epi_th: 0.0001 # ! set to normal range!
+# photo_warm_reset_opacity: True
+
+# photo_static_warm_steps: 10000 # ! debug for now #8000
+# photo_warm_optim_cam_after_steps: 4000
+# photo_warm_lambda_rgb: 1.0
+# photo_warm_lambda_dep: 0.5
+# photo_warm_lambda_normal: 0.1
+# photo_warm_random_bg: False
+# photo_warm_lr_sph_rest_factor: 10.0 #4.0
+# photo_warm_viz_interval: 2000
+# photo_warm_lr_p: 0.0003
+# photo_warm_lr_p_final: 0.000003
+# photo_warm_lr_q: 0.001
+# photo_warm_lr_s: 0.01
+# photo_warm_lr_o: 0.3
+# photo_warm_lr_sph: 0.0025
+
+# photo_warm_s_ctrl_reset_steps: 2001
+# photo_warm_s_ctrl_densify_steps: 300
+# photo_warm_s_ctrl_prune_steps: 300
+# photo_warm_s_ctrl_reset_opacity: 0.01
+# photo_warm_s_ctrl_prune_opacity_th: 0.01
+# photo_warm_s_ctrl_densify_max_grad: 0.0001
+
+# ######################################################
+# ######################################################
+
+# # * mosca init
+# mosca_unit_world: 0.01
+# # mosca_unit_auto_factor: 1.0
+
+# * mosca init
+mosca_unit_world: 0.01
+# mosca_unit_auto_factor: 1.0
+
+# ! refilter the curve
+refilter_curve_by_photo_error_cnt: -1 #4 # at least have 2 frame large error
+refilter_curve_by_photo_error_th: 0.1 #
+
+mosca_sigma_init_ratio: 7.0
+mosca_sigma_max_ratio: 20.0
+# mosca_sigma_init_ratio: 1.0
+mosca_dist_k: 3 # ! seems not suitable here
+mosca_topo_th_ratio: 5.0
+mosca_topo_sample_T: 100
+mosca_skinning_k: 16
+mosca_mlevel_list: [1, 4]
+mosca_mlevel_k_list: [8, 8]
+mosca_mlevel_w_list: [0.4, 0.3]
+
+mosca_resample_flag: True # False
+
+# * GEO SCF
+geo_temporal_diff_shift: [2, 8, 16]
+geo_temporal_diff_weight: [0.6, 0.4, 0.3]
+
+get_curve_refilter_shaking_th_world: 2.0
+get_curve_enforce_line_init: True
+
+geo_mosca_steps: 1500
+geo_mosca_lr_q: 0.03
+geo_mosca_lr_p: 0.03
+# debug
+geo_mosca_viz_interval: 250
+geo_mosca_viz_debug_interval: 250
+
+# * GS init
+gs_static_n_init: 80000 #50000 # 30000
+gs_dynamic_n_init: 30000
+gs_radius_max: 0.1
+gs_max_sph_order: 3
+gs_radius_init_factor: 1.0
+
+gs_max_node_num: 16384
+
+# * Photo
+photo_viz_interval: -1 #2001
+photo_viz_cheap_interval: 500
+
+gs_dynamic_start_opacity: 0.009
+gs_static_start_opacity: 0.01
+# gs_include_fg_in_static: False
+
+photo_total_steps: 6000
+photo_skinning_corr_start_steps: 5000
+# photo_lr_np: 0.0003
+# photo_lr_nq: 0.0003
+
+photo_lambda_rgb: 1.0
+photo_lambda_dep: 0.05
+photo_lambda_normal: 0.1
+photo_random_bg: False
+
+photo_lr_w: 0.003
+photo_lambda_small_w_reg: 0.6
+
+photo_lambda_track: 0.005
+photo_track_loss_interval: 8
+photo_track_flow_chance: 0.0
+track_flow_interval_candidates: [1, 3]
+
+photo_lr_p: 0.0003
+photo_lr_p_final: 0.000003
+photo_lr_q: 0.001
+photo_lr_s: 0.01
+photo_lr_o: 0.3
+photo_lr_sph: 0.0025
+photo_lr_np: 0.00016
+photo_lr_np_final: 0.0000016
+photo_lr_nq: 0.001
+photo_lr_nq_final: 0.00001
+photo_lr_nsig: 0.01
+photo_lr_sph_rest_factor: 10.0
+
+photo_lambda_vel_xyz_reg: 5.0
+photo_lambda_vel_rot_reg: 5.0
+photo_lambda_acc_rot_reg: 5.0
+photo_lambda_acc_xyz_reg: 5.0
+photo_lambda_arap_coord: 10.0
+photo_lambda_arap_len: 10.0
+
+photo_temporal_diff_shift: [1, 3, 6]
+photo_temporal_diff_weight: [0.6, 0.3, 0.1]
+photo_decay_start: 2000
+photo_optim_cam_after_steps: 3000
+
+photo_d_ctrl_densify_steps: 300
+photo_d_ctrl_prune_steps: 300
+photo_d_ctrl_reset_steps: 1000
+photo_d_ctrl_densify_max_grad: 0.0001
+photo_d_ctrl_prune_opacity_th: 0.052
+photo_d_ctrl_reset_opacity: 0.05
+
+photo_s_ctrl_densify_steps: 400
+photo_s_ctrl_prune_steps: 400
+photo_s_ctrl_reset_steps: 2001
+photo_s_ctrl_densify_max_grad: 0.0002
+photo_s_ctrl_prune_opacity_th: 0.05
+photo_s_ctrl_reset_opacity: 0.05
+
+# photo_s2d_trans_steps: [3000, 4000, 5000]
+photo_dyn_scf_prune_steps: [4500, 5500]
+photo_dyn_scf_prune_sk_th: 0.02
+# photo_dyn_error_grow_steps: [4250, 5250]
+# dyn_error_grow_th: 0.3
+# dyn_error_grow_num_frames: 2
+
+photo_dyn_node_densify_steps: [4250]
+photo_dyn_node_densify_grad_th: 0.2
+photo_dyn_node_densify_record_start_steps: 2000
+photo_dyn_node_densify_max_gs_per_new_node: 32
