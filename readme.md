@@ -45,7 +45,7 @@ python mosca_reconstruct.py --cfg ./profile/demo/demo_fit.yaml --ws ./demo/duck
 You should expect some output like this:
 
 <video width="480" controls>
-    <source src="https://github.com/JiahuiLei/MoSca/assets/duck_480.mp4" type="video/mp4">
+    <source src="./assets/duck_480.mp4" type="video/mp4">
 </video>
 
 **More examples are in `example.sh`**. `demo.ipynb` also provides some examples of the system.
@@ -63,7 +63,7 @@ python lite_moca_reconstruct.py --cfg ./profile/demo/demo_fit.yaml --ws ./demo/d
 You should expect some output like this:
 
 <video width="480" controls>
-    <source src="https://github.com/JiahuiLei/MoSca/assets/static_scaffold_init.mp4" type="video/mp4">
+    <source src="./assets/static_scaffold_init.mp4" type="video/mp4">
 </video>
 
 
