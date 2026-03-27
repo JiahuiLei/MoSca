@@ -170,7 +170,7 @@ def preprocess(
         ws=ws,
         save_name=f"dynamic_dep={moca_processor.dep_mode}",
         # n_track=8192 * 3,
-        n_track=getattr(pre_cfg, "n_track_pdynamic", 8192 * 3),
+        n_track=getattr(pre_cfg, "n_track_dynamic", 8192 * 3),
         img_list=img_list,
         mask_list=sample_mask.detach().cpu().numpy() > 0,
         dep_list=moca_processor.load_dep_list(
