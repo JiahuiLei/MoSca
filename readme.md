@@ -109,3 +109,13 @@ If you use either MoCa or MoSca, you should cite our technical paper:
   year={2024}
 }
 ```
+
+This repo is developed based on several amazing prior works:
+
+- DyCheck: https://kair-bair.github.io/dycheck/
+- RoDynrf: https://robust-dynrf.github.io/
+- ml-PGDVS: https://github.com/apple/ml-pgdvs
+- 3DGS: https://github.com/graphdeco-inria/gaussian-splatting
+- GART: https://github.com/JiahuiLei/GART
+- All foundational models repos as listed above
+- ...
